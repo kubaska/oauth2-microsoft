@@ -1,3 +1,7 @@
+This fork provides support for Microsoft Graph API which requires Authorization by header
+
+---
+
 # Microsoft Provider for OAuth 2.0 Client
 [![Latest Version](https://img.shields.io/github/release/stevenmaguire/oauth2-microsoft.svg?style=flat-square)](https://github.com/stevenmaguire/oauth2-microsoft/releases)
 [![Build Status](https://img.shields.io/travis/stevenmaguire/oauth2-microsoft/master.svg?style=flat-square)](https://travis-ci.org/stevenmaguire/oauth2-microsoft)
@@ -89,32 +93,9 @@ $authorizationUrl = $provider->getAuthorizationUrl($options);
 ```
 If neither are defined, the provider will utilize internal defaults.
 
-At the time of authoring this documentation, the following scopes are available.
+##### Default scopes: profile, email.
 
-##### Core
-- wl.basic
-- wl.offline_access
-- wl.signin
-
-##### Extended
-- wl.birthday
-- wl.calendars
-- wl.calendars_update
-- wl.contacts_birthday
-- wl.contacts_create
-- wl.contacts_calendars
-- wl.contacts_photos
-- wl.contacts_skydrive
-- wl.emails
-- wl.events_create
-- wl.imap
-- wl.phone_numbers
-- wl.photos
-- wl.postal_addresses
-- wl.skydrive
-- wl.skydrive_update
-- wl.work_profile
-- office.onenote_create
+[List of all available scopes.](https://docs.microsoft.com/en-us/graph/permissions-reference)
 
 
 ## Testing

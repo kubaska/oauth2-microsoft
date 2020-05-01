@@ -38,7 +38,7 @@ class MicrosoftResourceOwner implements ResourceOwnerInterface
      */
     public function getEmail()
     {
-        return $this->response['emails']['preferred'] ?: null;
+        return $this->response['userPrincipalName'] ?: null;
     }
 
     /**
@@ -48,7 +48,7 @@ class MicrosoftResourceOwner implements ResourceOwnerInterface
      */
     public function getFirstname()
     {
-        return $this->response['first_name'] ?: null;
+        return $this->response['givenName'] ?: null;
     }
 
     /**
@@ -58,7 +58,7 @@ class MicrosoftResourceOwner implements ResourceOwnerInterface
      */
     public function getLastname()
     {
-        return $this->response['last_name'] ?: null;
+        return $this->response['surname'] ?: null;
     }
 
     /**
@@ -68,17 +68,7 @@ class MicrosoftResourceOwner implements ResourceOwnerInterface
      */
     public function getName()
     {
-        return $this->response['name'] ?: null;
-    }
-
-    /**
-     * Get user urls
-     *
-     * @return string|null
-     */
-    public function getUrls()
-    {
-        return isset($this->response['link']) ? $this->response['link'].'/cid-'.$this->getId() : null;
+        return $this->response['displayName'] ?: null;
     }
 
     /**

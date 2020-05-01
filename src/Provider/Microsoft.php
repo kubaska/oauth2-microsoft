@@ -30,11 +30,16 @@ class Microsoft extends AbstractProvider
     protected $urlAccessToken = 'https://login.live.com/oauth20_token.srf';
 
     /**
-     * Base url for resource owner.
+     * Get provider url to fetch user details
      *
-     * @var string
+     * @param  AccessToken $token
+     *
+     * @return string
      */
-    protected $urlResourceOwnerDetails = 'https://apis.live.net/v5.0/me';
+    public function getResourceOwnerDetailsUrl(AccessToken $token)
+    {
+        return 'https://graph.microsoft.com/v1.0/me';
+    }
 
     /**
      * Get authorization url to begin OAuth flow
@@ -96,17 +101,8 @@ class Microsoft extends AbstractProvider
         return new MicrosoftResourceOwner($response);
     }
 
-    /**
-     * Get provider url to fetch user details
-     *
-     * @param  AccessToken $token
-     *
-     * @return string
-     */
-    public function getResourceOwnerDetailsUrl(AccessToken $token)
+    public function getAuthorizationHeaders($token = null)
     {
-        $uri = new Uri($this->urlResourceOwnerDetails);
-
-        return (string) Uri::withQueryValue($uri, 'access_token', (string) $token);
+        return ['Authorization' => 'Bearer ' . $token];
     }
 }
